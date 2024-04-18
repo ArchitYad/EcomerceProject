@@ -1,0 +1,154 @@
+.Customer-Details{
+  display: flex;
+  justify-content:flex-end;
+  background-color:rgb(213, 249, 235);
+  align-items: center;
+  box-shadow: 1px 1px 1px 1px;
+  border-radius: 0.2rem;
+}
+.Details{
+  display: flex;
+  align-items: center;
+}
+.Details .helptext{
+  display: flex;
+  align-items: center;
+}
+.Details .helpicon{
+  display: none;
+}
+.Details div{
+  margin:0 20px;
+}
+.Details a{
+  text-decoration: none;
+}
+.Details select{
+  margin: 20px;
+}
+.tool{
+  width: 24px;
+  height: 24px;
+}
+.Search{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgb(144,255,144,0.9);
+}
+.sbar input{
+  width: 710px;;
+  box-sizing: border-box;
+  height: 40px;
+  margin-right: 10px;
+}
+.lbar{
+  border-radius: 0.6rem;
+  padding: 10px;
+  background-color: rgb(124,245,124,0.9);
+}
+.lbar a{
+  text-decoration: none;
+  color: darkgreen;
+}
+.Items ul{
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-wrap:wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.Items li{
+  position: relative;
+  border-radius: 0.2rem;
+  box-shadow: 0px 2px 2px 1px;
+}
+.Items li a{
+  text-decoration: none;
+  color: #333;
+  cursor:pointer;
+}
+.opt{
+  display: none;
+  box-shadow:2px 2px 2px 2px;
+  border-radius: 0.6rem;
+  position: absolute;
+  z-index: 8;
+  left: 0;
+  top: 100%;
+  width:100%;
+}
+.FiltCont{
+  display: flex;
+  flex-direction: column;
+}
+.PrevContent ul{
+  list-style: none;
+  text-decoration: none;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+.Filters{
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.image-container {
+display: flex;
+flex-wrap: wrap;
+justify-content: center;
+margin-top: 20px;
+}
+.image-item {
+margin: 10px;
+position: relative;
+}
+.image-item img {
+width: 200px;
+height: 200px;
+object-fit: cover;
+}
+.hover-image {
+position: absolute;
+top: 0;
+left: 0;
+display: none;
+width: 200px;
+height: 200px;
+}
+.image-item:hover .hover-image {
+display: block;
+}
+.cart {
+display: flex;
+justify-content: center;
+align-item: center;
+margin-top: 20px;
+}
+.cart ul {
+list-style: none;
+padding: 0;
+}
+.cart ul li {
+margin-bottom: 5px;
+}
+.image-price {
+    font-size: 20px;
+    color: #333;
+    text-align: center;
+}
+@media (max-width: 767px) {
+      .Items.show-menu li {
+        margin-right: 0;
+        margin-bottom: 10px;
+      }
+  .Details .helptext{
+    display: none;
+  }
+  .Details .helpicon{
+    display: inline-block;
+  }
+}

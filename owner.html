@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Product Management</title>
+  <style>
+    body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 20px;
+}
+
+.product-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.product {
+  width: 200px;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.product img {
+  width: 100%;
+  height: auto;
+  border-radius: 5px;
+}
+.add-product form {
+  display: flex;
+  flex-direction: column;
+}
+
+.add-product input,
+.add-product button {
+  margin-bottom: 10px;
+}
+
+.add-product button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.add-product button:hover {
+  background-color: #0056b3;
+}
+.image-price {
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+}
+#image-container{
+  display: flex;
+  justify-content:space-around;
+  align-items: center;
+  flex-wrap:wrap;
+  border-radius: 0.6rem;
+  box-shadow: 3px 1px 3px 1px;
+}
+#ftm{
+  border-radius: 0.6rem;
+    box-shadow: 2px 1px 1px 2px;
+    width: 455px;
+    margin-left: 540px;
+    margin-bottom: 30px;
+}
+#btn{
+  width: 199px;
+    margin-left: 122px;
+    border-radius: 12px;
+}
+.headt22BCE2146{
+  text-align:center;
+}
+.image-item{
+  border-radius: 0.6rem;
+    box-shadow: 0px 2px 2px 1px;
+    margin:11px;
+}
+.image-item img{
+  width:300px;
+  height: 300px;
+}
+  </style>
+</head>
+<body>
+  <header>
+    <hr style="border-style:dotted"><h2 class="headt22BCE2146">Add New Product</h2><hr style="border-style:dotted">
+  </header>
+  <section class="add-product">
+  <div id="ftm">
+  <form id="productForm">
+    <legend style="text-align:center;">New Product</legend><hr style="border-style:dashed;width:448px;">
+    <input type="text" id="productName" placeholder="Product Name" required>
+    <input type="number" id="productPrice" placeholder="Price" required>
+    <input type="file" id="productImage" accept="image/*" required>
+    <button id="btn" type="submit">Add Product</button>
+  </form>
+  </div>
+</section>
+<section id="image-container"></section>
+  <script>
+    const imageCount = 22;
+const imageNames = Array.from({ length: imageCount }, (_, i) => `f${i + 1}.webp`);
+const imagePrices = [60, 120, 3000, 70, 40, 50, 117, 150, 220, 5, 520, 550, 7000, 15000, 330, 440, 65, 55, 45, 75, 500, 9000];
+const container = document.getElementById('image-container');
+const cartItems = [];
+function createProductElement(imageSrc, name, price, index) {
+  const imageDiv = document.createElement('div');
+  imageDiv.classList.add('image-item');
+
+  const imgElement = document.createElement('img');
+  imgElement.src = imageSrc;
+  imgElement.alt = `Image ${index + 1}`;
+
+  const priceParagraph = document.createElement('p');
+  priceParagraph.textContent = `Price: ₹${price}`;
+  priceParagraph.classList.add('image-price');
+
+  const removeButton = document.createElement('button');
+  removeButton.classList.add('brt');
+  removeButton.textContent = 'Remove';
+  removeButton.addEventListener('click', () => {
+    removeProduct(index);
+  });
+
+  imageDiv.appendChild(imgElement);
+  imageDiv.appendChild(priceParagraph);
+  imageDiv.appendChild(removeButton);
+
+  return imageDiv;
+}
+function displayImages() {
+  container.innerHTML = ''; // Clear existing content
+  imageNames.forEach((imageName, index) => {
+    const imageDiv = createProductElement(`Image/front/${imageName}`, imageName, imagePrices[index], index);
+    container.appendChild(imageDiv);
+  });
+}
+function removeProduct(index) {
+  imageNames.splice(index, 1);
+  imagePrices.splice(index, 1);
+  displayImages();
+}
+
+// Function to add a new product
+function addProduct(name, price, imageSrc) {
+  imageNames.push(name);
+  imagePrices.push(parseInt(price));
+  const newProductIndex = imageNames.length - 1;
+  const newProductElement = createProductElement(imageSrc, name, price, newProductIndex);
+  container.appendChild(newProductElement);
+}
+
+// Submit event listener for the form
+document.getElementById('productForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  const productName = document.getElementById('productName').value;
+  const productPrice = document.getElementById('productPrice').value;
+  const productImage = document.getElementById('productImage').files[0];
+
+  if (productName && productPrice && productImage) {
+    const reader = new FileReader();
+    reader.onload = function(e) {
+      const productImageSrc = e.target.result;
+      addProduct(productName, productPrice, productImageSrc);
+    }
+    reader.readAsDataURL(productImage);
+    this.reset();
+  } else {
+    alert('Please enter valid name, price, and select an image.');
+  }
+});
+displayImages();
+
+  </script>
+</body>
+</html>

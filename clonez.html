@@ -1,0 +1,303 @@
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>FoodMall</title>
+    <link rel="icon" href="logoi.png">
+    <link rel="stylesheet" href="clsty.css">
+     <link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+     <style>
+#cart-icon {
+    padding: 10px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 10px;
+}
+.foot{
+  width:100%;
+  height:150px;
+  border-radius: 0.8 rem;
+}
+.lastp{
+  width:100%;
+}
+.footer{
+background:lightgreen;
+padding:30px 0px;
+font-family: sans-serif;
+text-align: center;
+border-radius: 0.9rem;
+box-shadow:1px 2px 1px 2px;
+width:100%;
+height:150px;
+}
+.sow{
+  display: flex;
+  width:122px;
+  height:80px;
+}
+.footer .row{
+ width:100%;
+ padding:0.6% 0%;
+ color: black;
+ font-size:0.9rem;
+}
+
+.footer .row a{
+ text-decoration:none;
+ color:black;
+ transition:0.5s;
+}
+
+.footer .row a:hover{
+   color:#fff;
+}
+
+.footer .row ul{
+   width:100%;
+}
+
+.footer .row ul li{
+ display: inline-block;
+ margin: 0px 32px;
+}
+
+.footer .row a i{
+  font-size:2em;
+  margin:0% 1%;
+}
+.image-item{
+  border-radius: 0.6rem;
+    box-shadow: 0px 2px 2px 1px;
+}
+.image-item img{
+  width: 300px;
+  height: 300px;
+}
+.input-container{
+  display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin-bottom: 7px;
+    border-radius: 16rem;
+    box-shadow: 0px 1px 1px 0px;
+}
+.image-container{
+  border-radius: 0.6rem;
+    box-shadow: 3px 1px 3px 1px;
+}
+  </style>
+  </head>
+  <body>
+    <header>
+    <nav>
+    <div class="Customer-Details">
+      <div class="Details">
+      <div class="helptext"><a href="#"><img class="tool" src="Contact.png"><span>+123456789</span></a></div>
+      <div class="helpicon"><a href="#"><img class="tool" src="Contact.png"></a></div>
+      <div><a href="#"><select class="select">
+        <option>INDIA</option>
+        <option>USA</option>
+        <option>UK</option>
+        <option>Australia</option>
+      </select></a></div>
+      <button id="getLocationButton"><div><a href="#"><img class="tool" src="Location.png"></a></div></button>
+      <div id="cityDisplay" style="display:none;">
+        <p></p>
+    </div>
+      <div><a href="owner.html"><img class="tool" src="Listc.png"></a></div>
+      <div><a href="#"><img id ="carty" class="tool" src="Cart.png"></a></div>
+      <div><a href="loginpg.html"><img class="tool" src="Account.png"></a></div>
+    </div>
+  </div>
+  <div class="Search">
+    <div>
+      <img src="Logoam.png" alt="General Store" width="100px" height="100px">
+    </div>
+    <div class="sbar">
+      <form>
+        <input placeholder="Search for any stationary items">
+      </form>
+    </div>
+    <div class="lbar">
+      <a href="#" target="_blank">Offers</a>
+    </div>
+  </div>
+  <div class="Items">
+      <ul>
+        <li><a class="anch" href="f11h.html" onclick="prev('Grocery')" onmouseover="showDiv('1')" onmouseout="hideDiv('1')" >Grocery</a><div id="1" class="opt">Content</div></li>
+        <li><a class="anch" href="f20h.html" onclick="prev('Personalcare')" onmouseover="showDiv('2')" onmouseout="hideDiv('2')">Personalcare</a><div id="2" class="opt">Content</div></li>
+        <li><a class="anch" href="f13h.html" onclick="prev('Technology')" onmouseover="showDiv('3')" onmouseout="hideDiv('3')">Technology</a><div id="3" class="opt">Content</div></li>
+        <li><a class="anch" href="f15h.html" onclick="prev('Healthcare')" onmouseover="showDiv('4')" onmouseout="hideDiv('4')">Healthcare</a><div id="4" class="opt">Content</div></li>
+        <li><a class="anch" href="f22h.html" onclick="prev('Housecare')" onmouseover="showDiv('5')" onmouseout="hideDiv('5')">Housecare</a><div id="5" class="opt">Content</div></li>
+        <li><a class="anch" href="f14h.html" onclick="prev('Education')" onmouseover="showDiv('6')" onmouseout="hideDiv('6')">Education</a><div id="6" class="opt">Content</div></li>
+      </ul>
+  </div>
+  <div class="FiltCont">
+    <div class="PrevContent">
+      <hr>
+      <ul>
+        <li>Home</li>
+      </ul>
+      <hr>
+    </div>
+    <div class="Filters">
+    <select>
+      <option>Category</option>
+      <option>Fruits</option>
+    </select>
+     <select>
+         <option>Price</option>
+         <option>20,000-30,000</option>
+     </select>
+     <select>
+       <option>Replacement</option>
+       <option>TV</option>
+    </select>
+    <select>
+       <option>Gifts</option>
+       <option>Grocery</option>
+    </select>
+    <select>
+       <option>Others</option>
+    </select>
+  </div>
+  </div>
+  </nav>
+  </header>
+   <section style="background-color:rgb(178, 226, 217)">
+     <div class="image-container" id="image-container"></div>
+   </section>
+   <section>
+   <div id="image-container"></div>
+    <div id="cart-info"></div>
+    <div id="total-items"></div>
+  </section>
+  <section>
+  <div class="foot">
+    <footer>
+      <div class="footer">
+  <div class="sow">
+  <a href="#"><svg class="svg-inline--fa fa-facebook-f fa-w-9 btn-outline-dark fa-2x" aria-hidden="true" data-prefix="fab" data-icon="facebook-f" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 264 512" data-fa-i2svg=""><path fill="currentColor" d="M76.7 512V283H0v-91h76.7v-71.7C76.7 42.4 124.3 0 193.8 0c33.3 0 61.9 2.5 70.2 3.6V85h-48.2c-37.8 0-45.1 18-45.1 44.3V192H256l-11.7 91h-73.6v229"></path></svg></a>
+  <a href="#"><svg class="svg-inline--fa fa-instagram fa-w-14 btn-outline-dark fa-2x" aria-hidden="true" data-prefix="fab" data-icon="instagram" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"></path>
+  </svg></a>
+  <a href="#"><svg class="svg-inline--fa fa-envelope fa-w-16 btn-outline-dark fa-2x" aria-hidden="true" data-prefix="fas" data-icon="envelope" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"></path></svg></a>
+  <a href="#"><svg class="svg-inline--fa fa-twitter fa-w-16 btn-outline-dark fa-2x" aria-hidden="true" data-prefix="fab" data-icon="twitter" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path>
+  </svg>
+  </a>
+  </div>
+
+  <div class="row">
+  <ul>
+  <li><a href="#">Contact us</a></li>
+  <li><a href="#">Our Services</a></li>
+  <li><a href="#">Privacy Policy</a></li>
+  <li><a href="#">Terms & Conditions</a></li>
+  <li><a href="#">Career</a></li>
+  </ul>
+  </div>
+
+  <div class="row">
+   Copyright © 2024
+  </div>
+  </div class="lastp">
+    </footer>
+  </div>
+  </section>
+   <script src="proscript.js"></script>
+   <script>
+   const imageCount = 22;
+        const imageNames = Array.from({ length: imageCount }, (_, i) => `f${i + 1}.webp`);
+        const imagePrices = [60, 120, 3000, 70, 40, 50, 117, 150, 220, 5, 520, 550, 7000, 15000, 330, 440, 65, 55, 45, 75, 500, 9000];
+        const cartItems = [];
+
+        function displayImages() {
+            const container = document.getElementById('image-container');
+            imageNames.forEach((imageName, index) => {
+                const imageDiv = document.createElement('div');
+                imageDiv.classList.add('image-item');
+
+                const anchorElement = document.createElement('a');
+                anchorElement.href = `f${index + 1}h.html`;
+
+                const imgElement = document.createElement('img');
+                imgElement.src = `Image/front/${imageName}`;
+                imgElement.alt = `Image ${index + 1}`;
+
+                const hoverImgElement = document.createElement('img');
+                hoverImgElement.src = `Image/back/b${index + 1}.webp`;
+                hoverImgElement.alt = `Hover Image ${index + 1}`;
+                hoverImgElement.classList.add('hover-image');
+
+                const priceParagraph = document.createElement('p');
+                priceParagraph.textContent = `Price: ₹${imagePrices[index]}`;
+                priceParagraph.classList.add('image-price');
+
+                const inputContainer = document.createElement('div');
+                inputContainer.classList.add('input-container');
+
+                const quantityInput = document.createElement('input');
+                quantityInput.type = 'number';
+                quantityInput.min = 0;
+
+                const addToCartButton = document.createElement('button');
+                addToCartButton.textContent = 'Add to Cart';
+                addToCartButton.addEventListener('click', () => {
+                    const quantity = parseInt(quantityInput.value);
+                    const totalPrice = imagePrices[index] * quantity;
+                    cartItems.push({ name: imageName, price: totalPrice, quantity: quantity });
+                    console.log(cartItems);
+                    updateCartInfo();
+                });
+
+                inputContainer.appendChild(quantityInput);
+                inputContainer.appendChild(addToCartButton);
+
+                anchorElement.appendChild(imgElement);
+                anchorElement.appendChild(hoverImgElement);
+                anchorElement.appendChild(priceParagraph);
+                imageDiv.appendChild(anchorElement);
+                imageDiv.appendChild(inputContainer);
+                container.appendChild(imageDiv);
+            });
+        }
+
+        function updateCartInfo() {
+            const cartInfo = document.getElementById('cart-info');
+            const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
+            const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
+            cartInfo.innerHTML = `Total Items: ${totalItems}, Total Price: ₹${totalPrice}`;
+        }
+        const cartIcon = document.getElementById('carty');
+        cartIcon.addEventListener('click', () => {
+            updateCartInfo();
+            console.log(cartItems);
+            displayTotalItems();
+        });
+        function displayTotalItems() {
+          const totalItems = cartItems.reduce((total, item) => total + item.quantity, 0);
+            const totalPrice = cartItems.reduce((total, item) => total + item.price, 0);
+            alert(`Total Items Selected: ${totalItems}\nTotal Price: ₹${totalPrice}`);
+        }
+
+        displayImages();
+        const getCity = () => {
+            fetch("https://ipapi.co/json/")
+                .then((response) => response.json())
+                .then((data) => {
+                    const cityName = data.city;
+                    const cityDisplay = document.getElementById("cityDisplay");
+                    cityDisplay.style.display = "block";
+                    cityDisplay.querySelector("p").innerHTML = `City: ${cityName}`;
+                })
+                .catch((error) => {
+                    console.error("Error fetching Archit 22BCE2146 city:", error);
+                });
+        };
+
+        document.getElementById("getLocationButton").addEventListener("click", getCity);
+</script>
+  </body>
+</html>

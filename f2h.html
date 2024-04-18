@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Slider</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://kit.fontawesome.com/507e8f8373.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+  <style>
+  #content-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.column {
+    width: 600px;
+    padding: 10px;
+}
+#featured {
+    max-width: 500px;
+    max-height: 600px;
+    object-fit: cover;
+    cursor: pointer;
+    border: 2px solid black;
+}
+.thumbnail {
+    object-fit: cover;
+    max-width: 180px;
+    max-height: 100px;
+    cursor: pointer;
+    opacity: 0.5;
+    margin: 5px;
+    border: 2px solid black;
+}
+.thumbnail:hover {
+    opacity: 1;
+}
+.active {
+    opacity: 1;
+}
+#slide-wrapper {
+    max-width: 500px;
+    display: flex;
+    min-height: 100px;
+    align-items: center;
+}
+#slider {
+    width: 440px;
+    display: flex;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+}
+#slideLeft, #slideRight {
+    background: none;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+}
+.arrow{
+	width: 30px;
+	height: 30px;
+	cursor: pointer;
+	transition: .3s;
+}
+.arrow:hover{
+	opacity: .5;
+	width: 35px;
+	height: 35px;
+}
+.custr{
+	display:flex;
+	justify-content: center;
+	align-items:center;
+	flex-direction:column;
+}
+.review{
+	  border-radius: 12px;
+    box-shadow: 2px 2px 0px 0px;
+    width: 362px;
+    border-left: 10px solid;
+}
+.picrv{
+	display: flex;
+	justify-content:flex-start;
+	align-items: center;
+}
+.act{
+	margin-left: 35px;
+	border-radius: 5.6rem;
+    box-shadow: 0px 1px 1px 0px;
+    padding: 9px;
+}
+.rstd{
+ display: flex;
+ margin-left: 95px;
+}
+.archit{
+	margin-right: 7px;
+}
+.cbx{
+	border-radius: 0.6rem;
+	box-shadow:0px 2px 2px 1px;
+}
+.cbx button{
+	margin-left: 150px;s
+}
+  </style>
+</head>
+<body>
+	<div id="content-wrapper">
+		<div class="column">
+			<img id=featured src="Image/front/f2.webp">
+			<div id="slide-wrapper" >
+				<img id="slideLeft" class="arrow" src="arrow.png">
+				<div id="slider">
+					<img class="thumbnail active" src="Image/front/f2.webp">
+					<img class="thumbnail" src="Image/back/b2.webp">
+				</div>
+				<img id="slideRight" class="arrow" src="arrow2.png">
+			</div>
+		</div>
+		<div class="column">
+			<h1>Dubai Dates</h1>
+			<hr>
+			<h3>Rs. 120.00</h3>
+			<p>Dates are small, sweet fruits that grow in large bunches on date palm trees. A single bunch may contain as many as 1,000 dates. Dried dates have a very high amount of sugar—at least half of their total weight. Date palms can be found in hot, dry climates.</p>
+		</div>
+	</div>
+ <section class="custr">
+	 <h4>Customer Reviews</h4>
+    <div id="existingReviews">
+        <h5>Existing Reviews</h5>
+        <div class="review">
+					<div class="picrv">
+					<div class="act">
+					<i class="fa-solid fa-user"></i>
+				</div>
+				<div class="rstd">
+					<div class="archit"><h5>Ratings: </h5></div>
+					<div>
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+				</div>
+				</div>
+			</div>
+				<div>
+        <p>Excellent service! Highly recommended!</p></div>
+        </div>
+        <div class="review">
+					<div class="picrv">
+					<div class="act">
+					<i class="fa-solid fa-user"></i>
+				</div>
+				<div class="rstd">
+					<div class="archit"><h5>Ratings: </h5></div>
+					<div>
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+					<i class="fa-solid fa-star"></i>
+				</div>
+				</div>
+			</div>
+				<div>
+				<p>Dates Quality is good and in taste.</p></div>
+				</div>
+        </div>
+    </div>
+		<div id="commentBox">
+        <h5>Write a Review</h5>
+				<div class="cbx">
+        <textarea id="userComment" rows="4" cols="50" placeholder="Write your review here..."></textarea><br>
+        <label for="rating">Rating:</label>
+        <select id="rating">
+            <option value="1">1 star</option>
+            <option value="2">2 stars</option>
+            <option value="3">3 stars</option>
+            <option value="4">4 stars</option>
+            <option value="5">5 stars</option>
+        </select><br>
+        <button onclick="submitReview()">Submit</button>
+			</div>
+    </div>
+    <div id="submittedReviews" style="display: none;">
+        <h2>Submitted Reviews</h2>
+    </div>
+</section>
+	<script>
+  let thumbnails = document.getElementsByClassName('thumbnail')
+
+		let activeImages = document.getElementsByClassName('active')
+
+		for (var i=0; i < thumbnails.length; i++){
+
+			thumbnails[i].addEventListener('mouseover', function(){
+				console.log(activeImages)
+
+				if (activeImages.length > 0){
+					activeImages[0].classList.remove('active')
+				}
+
+
+				this.classList.add('active')
+				document.getElementById('featured').src = this.src
+			})
+		}
+
+
+		let buttonRight = document.getElementById('slideRight');
+		let buttonLeft = document.getElementById('slideLeft');
+
+		buttonLeft.addEventListener('click', function(){
+			document.getElementById('slider').scrollLeft -= 100
+		})
+
+		buttonRight.addEventListener('click', function(){
+			document.getElementById('slider').scrollLeft += 100
+		})
+		//
+		function submitReview() {
+            var userComment = document.getElementById("userComment").value;
+            var rating = document.getElementById("rating").value;
+            var submittedReviews = document.getElementById("submittedReviews");
+            submittedReviews.style.display = "block";
+            submittedReviews.innerHTML += `
+                <div class="review">
+                    <div class="picrv">
+                        <div class="act">
+                            <i class="fas fa-user"></i>
+                        </div>
+                        <div class="rstd">
+                            <div class="archit"><h5>Ratings: </h5></div>
+                            ${generateStars(rating)}
+                        </div>
+                    </div>
+                    <div>
+                        <p>${userComment}</p>
+                    </div>
+                </div>
+            `;
+            var commentBox = document.getElementById("commentBox");
+            commentBox.innerHTML = "<p>Message sent</p>";
+        }
+        function generateStars(rating) {
+            var stars = '';
+            for (var i = 0; i < rating; i++) {
+                stars += '<i class="fas fa-star"></i>';
+            }
+            return stars;
+        }
+  </script>
+
+</body>
+</html>
